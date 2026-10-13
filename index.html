@@ -38,48 +38,38 @@
     header {
       background: linear-gradient(90deg, #2C001E 0%, #77216F 50%, #E95420 100%);
       color: white;
-      padding: 10px 16px;
+      padding: 8px 16px;
       display: flex;
       align-items: center;
       justify-content: space-between;
+      gap: 12px;
       box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
       z-index: 10;
+      flex-wrap: wrap;
     }
 
     .brand {
       display: flex;
       align-items: center;
-      gap: 10px;
+      gap: 8px;
       font-weight: bold;
       font-size: 1.1rem;
-    }
-
-    .brand span.sub {
-      font-size: 0.8rem;
-      font-weight: normal;
-      color: #ffccbc;
-      display: none;
-    }
-
-    @media (min-width: 640px) {
-      .brand span.sub {
-        display: inline;
-      }
     }
 
     .controls-top {
       display: flex;
       align-items: center;
       gap: 8px;
+      flex-wrap: wrap;
     }
 
     select, button {
       background: rgba(0, 0, 0, 0.4);
       color: white;
       border: 1px solid rgba(255, 255, 255, 0.3);
-      padding: 6px 12px;
+      padding: 6px 10px;
       border-radius: 6px;
-      font-size: 0.9rem;
+      font-size: 0.85rem;
       cursor: pointer;
       transition: all 0.2s ease;
     }
@@ -89,8 +79,8 @@
       border-color: white;
     }
 
-    button:active {
-      transform: scale(0.96);
+    select:focus, button:focus {
+      outline: 2px solid var(--ubuntu-orange);
     }
 
     /* Main Viewer */
@@ -101,7 +91,7 @@
       align-items: center;
       justify-content: center;
       overflow: auto;
-      padding: 12px;
+      padding: 10px;
     }
 
     .comic-wrapper {
@@ -113,7 +103,7 @@
     }
 
     #comic-image {
-      max-height: calc(100vh - 130px);
+      max-height: calc(100vh - 125px);
       max-width: 100%;
       object-fit: contain;
       border-radius: 8px;
@@ -122,20 +112,54 @@
       cursor: pointer;
     }
 
+    /* Teaser Jilid 2 Container */
+    #teaser-container {
+      display: none;
+      max-width: 600px;
+      background: #1e1e1e;
+      border: 1px solid #444;
+      border-radius: 12px;
+      padding: 28px;
+      text-align: center;
+      box-shadow: 0 12px 30px rgba(0,0,0,0.7);
+    }
+
+    #teaser-container h2 {
+      color: var(--ubuntu-orange);
+      margin-bottom: 12px;
+    }
+
+    #teaser-container p {
+      color: #ddd;
+      line-height: 1.6;
+      margin-bottom: 16px;
+      font-size: 0.95rem;
+    }
+
+    .badge-teaser {
+      display: inline-block;
+      background: #77216F;
+      color: white;
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      margin-bottom: 16px;
+    }
+
     /* Side Nav Buttons */
     .nav-btn {
       position: absolute;
       top: 50%;
       transform: translateY(-50%);
-      width: 48px;
-      height: 64px;
+      width: 44px;
+      height: 60px;
       background: rgba(20, 20, 20, 0.7);
       border: 1px solid #444;
       color: white;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 1.5rem;
+      font-size: 1.4rem;
       cursor: pointer;
       border-radius: 6px;
       transition: all 0.2s;
@@ -183,6 +207,7 @@
       color: var(--ubuntu-orange);
       min-width: 110px;
       text-align: center;
+      font-size: 0.9rem;
     }
 
     .footer-right {
@@ -208,14 +233,14 @@
       background: #c73e13;
     }
 
-    @media (max-width: 600px) {
+    @media (max-width: 640px) {
       .footer-left {
         display: none;
       }
       .nav-btn {
-        width: 38px;
-        height: 50px;
-        font-size: 1.2rem;
+        width: 36px;
+        height: 48px;
+        font-size: 1.1rem;
       }
     }
   </style>
@@ -226,10 +251,16 @@
   <header>
     <div class="brand">
       <span>🐟 PIRANHA UBUNTU 🐧</span>
-      <span class="sub">— The Complete Saga 2026</span>
     </div>
     <div class="controls-top">
-      <select id="chapter-select" aria-label="Pilih Bab">
+      <!-- Volume Selector -->
+      <select id="volume-select" aria-label="Pilih Jilid">
+        <option value="1">📘 Jilid 1: The Complete Saga (10 Bab)</option>
+        <option value="2">📙 Jilid 2: Petualangan Jaringan (Segera Hadir)</option>
+      </select>
+
+      <!-- Chapter / Page Selector -->
+      <select id="chapter-select" aria-label="Pilih Halaman">
         <option value="1">Hal 1: Cover Utama</option>
         <option value="2">Hal 2: Sinopsis & Daftar 10 Bab</option>
         <option value="3">Hal 3: Bab 1 - Kode Pertama</option>
@@ -244,7 +275,8 @@
         <option value="12">Hal 12: Bab 10 - Repositori Finale</option>
         <option value="13">Hal 13: Profil Penulis (Ilham Sugiri)</option>
       </select>
-      <button id="btn-fullscreen" title="Layar Penuh">⛶</button>
+
+      <button id="btn-fullscreen" title="Layar Penuh">⛶ Layar Penuh</button>
     </div>
   </header>
 
@@ -252,8 +284,24 @@
   <main id="main-area">
     <button class="nav-btn prev" id="btn-prev" title="Halaman Sebelumnya">❮</button>
 
-    <div class="comic-wrapper">
-      <img id="comic-image" src="assets/pages/page_01.jpg" alt="Piranha Ubuntu Page" />
+    <div class="comic-wrapper" id="comic-wrapper">
+      <img id="comic-image" src="jilid-01/assets/pages/page_01.jpg" alt="Piranha Ubuntu Page" />
+    </div>
+
+    <!-- Teaser Jilid 2 Display -->
+    <div id="teaser-container">
+      <span class="badge-teaser">SEDANG DALAM TAHAP PENYUSUNAN</span>
+      <h2>🚀 Piranha Ubuntu — Jilid 2</h2>
+      <p>
+        Petualangan Riko dan Tux akan berlanjut ke topik yang lebih seru:
+        <strong>Jaringan Linux, SSH Server, Firewall UFW, Docker Container, dan Keamanan Siber!</strong>
+      </p>
+      <p style="color: #bbb; font-size: 0.85rem;">
+        Karya Ilham Sugiri • Desa Panggungharjo, Bantul, D.I. Yogyakarta.
+      </p>
+      <button onclick="document.getElementById('volume-select').value='1'; switchVolume(1);" style="background: var(--ubuntu-orange); border: none; padding: 8px 16px;">
+        ◀ Kembali Membaca Jilid 1
+      </button>
     </div>
 
     <button class="nav-btn next" id="btn-next" title="Halaman Selanjutnya">❯</button>
@@ -272,53 +320,87 @@
     </div>
 
     <div class="footer-right">
-      <a class="pdf-link" href="PIRANHA_x5f_UBUNTU_x5f_LENGKAP_x5f_FINAL_x5f_13HAL.pdf" download>
+      <a class="pdf-link" id="pdf-download-btn" href="jilid-01/PIRANHA_UBUNTU_JILID_1_LENGKAP.pdf" download>
         ⬇ Download PDF
       </a>
     </div>
   </footer>
 
   <script>
-    const totalPages = 13;
+    const totalPagesJilid1 = 13;
+    let currentVolume = 1;
     let currentPage = 1;
 
     const imgElement = document.getElementById('comic-image');
+    const comicWrapper = document.getElementById('comic-wrapper');
+    const teaserContainer = document.getElementById('teaser-container');
     const pageIndicator = document.getElementById('page-indicator');
+    const volumeSelect = document.getElementById('volume-select');
     const chapterSelect = document.getElementById('chapter-select');
     const btnPrev = document.getElementById('btn-prev');
     const btnNext = document.getElementById('btn-next');
     const btnFooterPrev = document.getElementById('btn-footer-prev');
     const btnFooterNext = document.getElementById('btn-footer-next');
     const btnFullscreen = document.getElementById('btn-fullscreen');
+    const pdfDownloadBtn = document.getElementById('pdf-download-btn');
+
+    function switchVolume(vol) {
+      currentVolume = vol;
+      if (vol === 1) {
+        comicWrapper.style.display = 'flex';
+        teaserContainer.style.display = 'none';
+        chapterSelect.disabled = false;
+        btnPrev.style.display = 'flex';
+        btnNext.style.display = 'flex';
+        btnFooterPrev.style.display = 'inline-block';
+        btnFooterNext.style.display = 'inline-block';
+        pdfDownloadBtn.style.display = 'inline-flex';
+        updatePage(1);
+      } else {
+        comicWrapper.style.display = 'none';
+        teaserContainer.style.display = 'block';
+        chapterSelect.disabled = true;
+        btnPrev.style.display = 'none';
+        btnNext.style.display = 'none';
+        btnFooterPrev.style.display = 'none';
+        btnFooterNext.style.display = 'none';
+        pdfDownloadBtn.style.display = 'none';
+        pageIndicator.textContent = "Segera Hadir";
+      }
+    }
 
     function updatePage(pageNumber) {
+      if (currentVolume !== 1) return;
       if (pageNumber < 1) pageNumber = 1;
-      if (pageNumber > totalPages) pageNumber = totalPages;
+      if (pageNumber > totalPagesJilid1) pageNumber = totalPagesJilid1;
       currentPage = pageNumber;
 
       const formatted = String(currentPage).padStart(2, '0');
       imgElement.style.opacity = '0.4';
-      imgElement.src = `assets/pages/page_${formatted}.jpg`;
+      imgElement.src = `jilid-01/assets/pages/page_${formatted}.jpg`;
 
       imgElement.onload = () => {
         imgElement.style.opacity = '1';
       };
 
-      pageIndicator.textContent = `Halaman ${currentPage} / ${totalPages}`;
+      pageIndicator.textContent = `Halaman ${currentPage} / ${totalPagesJilid1}`;
       chapterSelect.value = String(currentPage);
 
       btnPrev.style.visibility = (currentPage === 1) ? 'hidden' : 'visible';
       btnFooterPrev.disabled = (currentPage === 1);
-      btnNext.style.visibility = (currentPage === totalPages) ? 'hidden' : 'visible';
-      btnFooterNext.disabled = (currentPage === totalPages);
+      btnNext.style.visibility = (currentPage === totalPagesJilid1) ? 'hidden' : 'visible';
+      btnFooterNext.disabled = (currentPage === totalPagesJilid1);
     }
+
+    volumeSelect.addEventListener('change', (e) => {
+      switchVolume(parseInt(e.target.value, 10));
+    });
 
     btnPrev.addEventListener('click', () => updatePage(currentPage - 1));
     btnNext.addEventListener('click', () => updatePage(currentPage + 1));
     btnFooterPrev.addEventListener('click', () => updatePage(currentPage - 1));
     btnFooterNext.addEventListener('click', () => updatePage(currentPage + 1));
 
-    // Klik gambar untuk lanjut ke halaman berikutnya
     imgElement.addEventListener('click', (e) => {
       const rect = imgElement.getBoundingClientRect();
       const clickX = e.clientX - rect.left;
@@ -333,7 +415,6 @@
       updatePage(parseInt(e.target.value, 10));
     });
 
-    // Navigasi Keyboard (Panah Kiri / Kanan)
     window.addEventListener('keydown', (e) => {
       if (e.key === 'ArrowRight' || e.key === 'PageDown' || e.key === ' ') {
         updatePage(currentPage + 1);
@@ -342,7 +423,6 @@
       }
     });
 
-    // Layar penuh
     btnFullscreen.addEventListener('click', () => {
       if (!document.fullscreenElement) {
         document.documentElement.requestFullscreen().catch(err => alert(err.message));
@@ -354,19 +434,13 @@
     // Touch Swipe Support
     let touchStartX = 0;
     let touchEndX = 0;
-
     document.getElementById('main-area').addEventListener('touchstart', (e) => {
       touchStartX = e.changedTouches[0].screenX;
     }, false);
-
     document.getElementById('main-area').addEventListener('touchend', (e) => {
       touchEndX = e.changedTouches[0].screenX;
-      if (touchEndX < touchStartX - 50) {
-        updatePage(currentPage + 1);
-      }
-      if (touchEndX > touchStartX + 50) {
-        updatePage(currentPage - 1);
-      }
+      if (touchEndX < touchStartX - 50) updatePage(currentPage + 1);
+      if (touchEndX > touchStartX + 50) updatePage(currentPage - 1);
     }, false);
 
     // Inisialisasi awal

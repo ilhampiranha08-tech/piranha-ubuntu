@@ -114,9 +114,12 @@ lsb_release -a
 
 # 5. Menjalankan skrip simulasi edukasi dari folder proyek ini:
 bash code-examples/01_kenalan_terminal.sh
+
+# 6. Menjalankan simulasi sensor telemetri sungai & energi surya (Bab 7 & 8):
+python3 code-examples/04_sensor_ekosistem_piranha.py
 ```
 
-*(Kumpulan skrip latihan interaktif dapat dilihat pada folder [`code-examples/`](code-examples/))*
+*(Kumpulan skrip latihan interaktif serta kode sumber `piranha_core.cpp` dan `utils.go` dari Bab 10 dapat dilihat pada folder [`code-examples/`](code-examples/))*
 
 ---
 
@@ -135,7 +138,7 @@ bash code-examples/01_kenalan_terminal.sh
 ## 📜 Lisensi & Hak Cipta
 
 * **Karya Komik & Ilustrasi Visual:** Dilisensikan di bawah lisensi **[Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)](LICENSE)**. Anda bebas membagikan, mencetak, dan mengadaptasi karya ini untuk tujuan edukasi dengan tetap mencantumkan atribusi kepada Ilham Sugiri.
-* **Kode Sumber Pendukung (Code Examples):** Dilisensikan di bawah lisensi **[GNU General Public License v3.0 (GPL-3.0)](https://www.gnu.org/licenses/gpl-3.0.html)** sesuai dengan semangat Open Source di Bab 10 komik ini.
+* **Kode Sumber Pendukung (Code Examples):** Dilisensikan di bawah lisensi **[GNU General Public License v3.0 (GPL-3.0)](LICENSE-CODE)** sesuai dengan semangat Open Source di Bab 10 komik ini.
 
 ---
 

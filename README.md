@@ -11,6 +11,7 @@
 [![Code License: GPL-3.0](https://img.shields.io/badge/Code-GPL--3.0-blue.svg)](LICENSE-CODE)
 [![Platform: Ubuntu Linux](https://img.shields.io/badge/OS-Ubuntu_Linux-E95420?logo=ubuntu&logoColor=white)](https://ubuntu.com/)
 [![Language: Bahasa Indonesia](https://img.shields.io/badge/Language-Bahasa_Indonesia-0052cc.svg)](#)
+[![YouTube: Video Animasi](https://img.shields.io/badge/YouTube-Video_Animasi-red?logo=youtube&logoColor=white)](https://youtube.com/shorts/YP0sYbD4jrM)
 [![Format: PDF & Web Reader](https://img.shields.io/badge/Format-PDF_%26_Web_Reader-orange.svg)](#cara-membaca--mengunduh)
 
 <br/>
@@ -35,6 +36,13 @@ Berikut adalah daftar jilid dari serial komik edukasi **Piranha Ubuntu**:
 | [📖 Buka Folder Jilid 1](jilid-01/) • [⬇ Download PDF](jilid-01/PIRANHA_UBUNTU_JILID_1_LENGKAP.pdf) | [🚀 Intip Rencana Jilid 2](jilid-02/) |
 
 </div>
+
+---
+
+## 🎬 Versi Video Animasi (YouTube Shorts)
+
+Saksikan cuplikan video animasi petualangan Riko dan Tux:
+* 🍿 **Tonton di YouTube:** [Piranha Ubuntu — The Complete Saga (Shorts)](https://youtube.com/shorts/YP0sYbD4jrM)
 
 ---
 

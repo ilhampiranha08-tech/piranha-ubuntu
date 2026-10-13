@@ -9,6 +9,7 @@
 ---
 
 [![Status: Selesai](https://img.shields.io/badge/Status-Lengkap_(10_Bab)-success.svg)](#)
+[![YouTube: Tonton Animasi](https://img.shields.io/badge/YouTube-Video_Animasi-red?logo=youtube&logoColor=white)](https://youtube.com/shorts/YP0sYbD4jrM)
 [![Format: PDF & Web Reader](https://img.shields.io/badge/Format-PDF_%26_Web-orange.svg)](#)
 [![License: CC BY-SA 4.0](https://img.shields.io/badge/License-CC_BY--SA_4.0-lightgrey.svg)](../LICENSE)
 [![Code License: GPL-3.0](https://img.shields.io/badge/Code-GPL--3.0-blue.svg)](../LICENSE-CODE)
@@ -58,6 +59,7 @@ Semua kode dan simulasi dari cerita Jilid 1 dapat dicoba langsung di folder [`co
 
 ---
 
-## 📥 Berkas Unduhan
+## 📥 Berkas Unduhan & Multimedia
 * 📄 **[Download PDF Jilid 1 Lengkap](PIRANHA_UBUNTU_JILID_1_LENGKAP.pdf)**
 * 🌐 **[Baca Online di Web Reader](https://ilhampiranha08-tech.github.io/piranha-ubuntu-komik/)**
+* 🎬 **[Tonton Versi Video Animasi di YouTube](https://youtube.com/shorts/YP0sYbD4jrM)**

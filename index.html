@@ -249,6 +249,128 @@
       background: #c73e13;
     }
 
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .btn-video {
+      background: #c4302b;
+      color: white;
+      border: 1px solid rgba(255, 255, 255, 0.4);
+      padding: 6px 10px;
+      border-radius: 6px;
+      font-size: 0.85rem;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      font-weight: 600;
+      transition: background 0.2s ease;
+    }
+
+    .btn-video:hover {
+      background: #e62117;
+      border-color: white;
+    }
+
+    /* Video Modal */
+    .modal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.85);
+      z-index: 9999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 16px;
+      backdrop-filter: blur(4px);
+    }
+
+    .modal-content {
+      background: var(--ubuntu-dark);
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      max-width: 380px;
+      width: 100%;
+      overflow: hidden;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.8);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .modal-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px 14px;
+      background: #181818;
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .modal-header h3 {
+      font-size: 0.95rem;
+      color: var(--text-light);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .modal-close {
+      background: transparent;
+      border: none;
+      color: #aaa;
+      font-size: 1.3rem;
+      cursor: pointer;
+      padding: 2px 8px;
+      line-height: 1;
+    }
+
+    .modal-close:hover {
+      color: white;
+    }
+
+    .video-container {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 9 / 16;
+      max-height: 65vh;
+      background: #000;
+      margin: 0 auto;
+    }
+
+    .video-container iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+
+    .modal-footer {
+      padding: 8px 14px;
+      display: flex;
+      justify-content: center;
+      background: #181818;
+      border-top: 1px solid var(--border-color);
+    }
+
+    .yt-external-btn {
+      color: #ff5555;
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 600;
+    }
+
+    .yt-external-btn:hover {
+      text-decoration: underline;
+    }
+
     @media (max-width: 640px) {
       header {
         display: grid;
@@ -267,10 +389,21 @@
         display: contents;
       }
 
-      #btn-fullscreen {
+      .header-actions {
         grid-column: 2;
         grid-row: 1;
+        display: flex;
+        align-items: center;
+        gap: 4px;
         justify-self: end;
+      }
+
+      .btn-video {
+        padding: 4px 8px;
+        font-size: 0.75rem;
+      }
+
+      #btn-fullscreen {
         padding: 4px 8px;
         font-size: 0.75rem;
       }
@@ -376,7 +509,10 @@
         <option value="13">Hal 13: Profil Penulis (Ilham Sugiri)</option>
       </select>
 
-      <button id="btn-fullscreen" title="Layar Penuh">⛶ Layar Penuh</button>
+      <div class="header-actions">
+        <button id="btn-video" class="btn-video" title="Tonton Video Animasi">🎬 Video</button>
+        <button id="btn-fullscreen" title="Layar Penuh">⛶ Layar Penuh</button>
+      </div>
     </div>
   </header>
 
@@ -399,9 +535,14 @@
       <p style="color: #bbb; font-size: 0.85rem;">
         Karya Ilham Sugiri • Desa Panggungharjo, Bantul, D.I. Yogyakarta.
       </p>
-      <button onclick="document.getElementById('volume-select').value='1'; switchVolume(1);" style="background: var(--ubuntu-orange); border: none; padding: 8px 16px;">
-        ◀ Kembali Membaca Jilid 1
-      </button>
+      <div style="display: flex; gap: 8px; justify-content: center; flex-wrap: wrap;">
+        <button onclick="document.getElementById('volume-select').value='1'; switchVolume(1);" style="background: var(--ubuntu-orange); border: none; padding: 8px 16px;">
+          ◀ Kembali Membaca Jilid 1
+        </button>
+        <button id="btn-teaser-video" style="background: #c4302b; border: 1px solid rgba(255,255,255,0.4); padding: 8px 16px;">
+          🎬 Tonton Video Animasi
+        </button>
+      </div>
     </div>
 
     <button class="nav-btn next" id="btn-next" title="Halaman Selanjutnya">❯</button>
@@ -545,6 +686,50 @@
 
     // Inisialisasi awal
     updatePage(1);
+
+    // Video Modal Handlers
+    const btnVideo = document.getElementById('btn-video');
+    const btnTeaserVideo = document.getElementById('btn-teaser-video');
+    const videoModal = document.getElementById('video-modal');
+    const btnCloseModal = document.getElementById('btn-close-modal');
+    const ytIframe = document.getElementById('youtube-iframe');
+
+    function openVideoModal() {
+      ytIframe.src = 'https://www.youtube.com/embed/YP0sYbD4jrM?autoplay=1';
+      videoModal.style.display = 'flex';
+    }
+
+    function closeVideoModal() {
+      videoModal.style.display = 'none';
+      ytIframe.src = '';
+    }
+
+    if (btnVideo) btnVideo.addEventListener('click', openVideoModal);
+    if (btnTeaserVideo) btnTeaserVideo.addEventListener('click', openVideoModal);
+    if (btnCloseModal) btnCloseModal.addEventListener('click', closeVideoModal);
+    if (videoModal) {
+      videoModal.addEventListener('click', (e) => {
+        if (e.target === videoModal) closeVideoModal();
+      });
+    }
   </script>
+
+  <!-- Video Modal -->
+  <div id="video-modal" class="modal-overlay" style="display: none;">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3><span>🎬</span> Video Animasi Piranha Ubuntu</h3>
+        <button id="btn-close-modal" class="modal-close" title="Tutup">✕</button>
+      </div>
+      <div class="video-container">
+        <iframe id="youtube-iframe" src="" title="Piranha Ubuntu YouTube Video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+      </div>
+      <div class="modal-footer">
+        <a href="https://youtube.com/shorts/YP0sYbD4jrM" target="_blank" rel="noopener noreferrer" class="yt-external-btn">
+          ▶ Buka di YouTube Shorts
+        </a>
+      </div>
+    </div>
+  </div>
 </body>
 </html>

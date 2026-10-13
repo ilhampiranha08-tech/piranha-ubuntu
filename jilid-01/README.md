@@ -60,4 +60,4 @@ Semua kode dan simulasi dari cerita Jilid 1 dapat dicoba langsung di folder [`co
 
 ## 📥 Berkas Unduhan
 * 📄 **[Download PDF Jilid 1 Lengkap](PIRANHA_UBUNTU_JILID_1_LENGKAP.pdf)**
-* 🌐 **[Baca Online di Web Reader](../index.html)**
+* 🌐 **[Baca Online di Web Reader](https://ilhampiranha08-tech.github.io/piranha-ubuntu-komik/)**

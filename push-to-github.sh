@@ -21,7 +21,7 @@ if git remote | grep -q "^origin$"; then
 fi
 
 echo "Silakan masukkan URL Repositori GitHub Anda."
-echo "Contoh: https://github.com/username-anda/piranha-ubuntu.git"
+echo "Contoh: https://github.com/username-anda/piranha-ubuntu-komik.git"
 echo ""
 read -p "URL GitHub: " REPO_URL
 

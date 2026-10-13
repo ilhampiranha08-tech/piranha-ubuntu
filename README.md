@@ -41,7 +41,7 @@ Berikut adalah daftar jilid dari serial komik edukasi **Piranha Ubuntu**:
 ## 🌐 Web Reader Interaktif (Baca Online)
 
 Repositori ini dilengkapi dengan pembaca komik berbasis web yang responsif untuk desktop dan smartphone:
-* **Baca Sekarang:** `https://<username-anda>.github.io/piranha-ubuntu/` *(setelah mengaktifkan GitHub Pages)*
+* **Baca Sekarang:** `https://<username-anda>.github.io/piranha-ubuntu-komik/` *(setelah mengaktifkan GitHub Pages)*
 * Mendukung navigasi tombol maju-mundur, daftar pilihan bab, keyboard (`←` / `→`), layar sentuh ponsel, dan mode layar penuh (*fullscreen*).
 
 ---

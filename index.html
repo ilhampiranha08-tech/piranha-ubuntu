@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Piranha Ubuntu — Web Comic Reader</title>
+  <meta name="description" content="Komik Edukasi Petualangan Linux, Terminal & Filosofi Open Source karya Ilham Sugiri" />
+  <link rel="icon" href="assets/cover.jpg" type="image/jpeg" />
+  <style>
+    :root {
+      --ubuntu-orange: #E95420;
+      --ubuntu-aubergine: #77216F;
+      --ubuntu-dark: #1e1e1e;
+      --ubuntu-darker: #121212;
+      --text-light: #f5f5f5;
+      --text-muted: #aaaaaa;
+      --border-color: #333333;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      user-select: none;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--ubuntu-darker);
+      color: var(--text-light);
+      display: flex;
+      flex-direction: column;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    /* Header Nav */
+    header {
+      background: linear-gradient(90deg, #2C001E 0%, #77216F 50%, #E95420 100%);
+      color: white;
+      padding: 10px 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+      z-index: 10;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: bold;
+      font-size: 1.1rem;
+    }
+
+    .brand span.sub {
+      font-size: 0.8rem;
+      font-weight: normal;
+      color: #ffccbc;
+      display: none;
+    }
+
+    @media (min-width: 640px) {
+      .brand span.sub {
+        display: inline;
+      }
+    }
+
+    .controls-top {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    select, button {
+      background: rgba(0, 0, 0, 0.4);
+      color: white;
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      padding: 6px 12px;
+      border-radius: 6px;
+      font-size: 0.9rem;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    select:hover, button:hover {
+      background: rgba(0, 0, 0, 0.7);
+      border-color: white;
+    }
+
+    button:active {
+      transform: scale(0.96);
+    }
+
+    /* Main Viewer */
+    main {
+      flex: 1;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: auto;
+      padding: 12px;
+    }
+
+    .comic-wrapper {
+      position: relative;
+      max-height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    #comic-image {
+      max-height: calc(100vh - 130px);
+      max-width: 100%;
+      object-fit: contain;
+      border-radius: 8px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
+      transition: opacity 0.2s ease, transform 0.2s ease;
+      cursor: pointer;
+    }
+
+    /* Side Nav Buttons */
+    .nav-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 48px;
+      height: 64px;
+      background: rgba(20, 20, 20, 0.7);
+      border: 1px solid #444;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      cursor: pointer;
+      border-radius: 6px;
+      transition: all 0.2s;
+      z-index: 5;
+    }
+
+    .nav-btn:hover {
+      background: var(--ubuntu-orange);
+      border-color: var(--ubuntu-orange);
+    }
+
+    .nav-btn.prev {
+      left: 12px;
+    }
+
+    .nav-btn.next {
+      right: 12px;
+    }
+
+    /* Footer Bottom Bar */
+    footer {
+      background-color: var(--ubuntu-dark);
+      border-top: 1px solid var(--border-color);
+      padding: 8px 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      z-index: 10;
+    }
+
+    .footer-left {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
+    .footer-center {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .page-indicator {
+      font-weight: 600;
+      color: var(--ubuntu-orange);
+      min-width: 110px;
+      text-align: center;
+    }
+
+    .footer-right {
+      display: flex;
+      gap: 8px;
+    }
+
+    .pdf-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--ubuntu-orange);
+      color: white;
+      text-decoration: none;
+      padding: 6px 12px;
+      border-radius: 6px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      transition: background 0.2s;
+    }
+
+    .pdf-link:hover {
+      background: #c73e13;
+    }
+
+    @media (max-width: 600px) {
+      .footer-left {
+        display: none;
+      }
+      .nav-btn {
+        width: 38px;
+        height: 50px;
+        font-size: 1.2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <div class="brand">
+      <span>🐟 PIRANHA UBUNTU 🐧</span>
+      <span class="sub">— The Complete Saga 2026</span>
+    </div>
+    <div class="controls-top">
+      <select id="chapter-select" aria-label="Pilih Bab">
+        <option value="1">Hal 1: Cover Utama</option>
+        <option value="2">Hal 2: Sinopsis & Daftar 10 Bab</option>
+        <option value="3">Hal 3: Bab 1 - Kode Pertama</option>
+        <option value="4">Hal 4: Bab 2 - Terminal & Update</option>
+        <option value="5">Hal 5: Bab 3 - Boss Folder /root</option>
+        <option value="6">Hal 6: Bab 4 - Petualangan Antariksa</option>
+        <option value="7">Hal 7: Bab 5 - Lab Komunitas Desa</option>
+        <option value="8">Hal 8: Bab 6 - Festival Ubuntu</option>
+        <option value="9">Hal 9: Bab 7 - Sensor Hutan Piranha</option>
+        <option value="10">Hal 10: Bab 8 - Green Data Center</option>
+        <option value="11">Hal 11: Bab 9 - Pulau Kode 9</option>
+        <option value="12">Hal 12: Bab 10 - Repositori Finale</option>
+        <option value="13">Hal 13: Profil Penulis (Ilham Sugiri)</option>
+      </select>
+      <button id="btn-fullscreen" title="Layar Penuh">⛶</button>
+    </div>
+  </header>
+
+  <!-- Viewer -->
+  <main id="main-area">
+    <button class="nav-btn prev" id="btn-prev" title="Halaman Sebelumnya">❮</button>
+
+    <div class="comic-wrapper">
+      <img id="comic-image" src="assets/pages/page_01.jpg" alt="Piranha Ubuntu Page" />
+    </div>
+
+    <button class="nav-btn next" id="btn-next" title="Halaman Selanjutnya">❯</button>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-left">
+      <span>Karya <strong>Ilham Sugiri</strong> • Desa Panggungharjo</span>
+    </div>
+
+    <div class="footer-center">
+      <button id="btn-footer-prev">◀ Mundur</button>
+      <div class="page-indicator" id="page-indicator">Halaman 1 / 13</div>
+      <button id="btn-footer-next">Maju ▶</button>
+    </div>
+
+    <div class="footer-right">
+      <a class="pdf-link" href="PIRANHA_x5f_UBUNTU_x5f_LENGKAP_x5f_FINAL_x5f_13HAL.pdf" download>
+        ⬇ Download PDF
+      </a>
+    </div>
+  </footer>
+
+  <script>
+    const totalPages = 13;
+    let currentPage = 1;
+
+    const imgElement = document.getElementById('comic-image');
+    const pageIndicator = document.getElementById('page-indicator');
+    const chapterSelect = document.getElementById('chapter-select');
+    const btnPrev = document.getElementById('btn-prev');
+    const btnNext = document.getElementById('btn-next');
+    const btnFooterPrev = document.getElementById('btn-footer-prev');
+    const btnFooterNext = document.getElementById('btn-footer-next');
+    const btnFullscreen = document.getElementById('btn-fullscreen');
+
+    function updatePage(pageNumber) {
+      if (pageNumber < 1) pageNumber = 1;
+      if (pageNumber > totalPages) pageNumber = totalPages;
+      currentPage = pageNumber;
+
+      const formatted = String(currentPage).padStart(2, '0');
+      imgElement.style.opacity = '0.4';
+      imgElement.src = `assets/pages/page_${formatted}.jpg`;
+
+      imgElement.onload = () => {
+        imgElement.style.opacity = '1';
+      };
+
+      pageIndicator.textContent = `Halaman ${currentPage} / ${totalPages}`;
+      chapterSelect.value = String(currentPage);
+
+      btnPrev.style.visibility = (currentPage === 1) ? 'hidden' : 'visible';
+      btnFooterPrev.disabled = (currentPage === 1);
+      btnNext.style.visibility = (currentPage === totalPages) ? 'hidden' : 'visible';
+      btnFooterNext.disabled = (currentPage === totalPages);
+    }
+
+    btnPrev.addEventListener('click', () => updatePage(currentPage - 1));
+    btnNext.addEventListener('click', () => updatePage(currentPage + 1));
+    btnFooterPrev.addEventListener('click', () => updatePage(currentPage - 1));
+    btnFooterNext.addEventListener('click', () => updatePage(currentPage + 1));
+
+    // Klik gambar untuk lanjut ke halaman berikutnya
+    imgElement.addEventListener('click', (e) => {
+      const rect = imgElement.getBoundingClientRect();
+      const clickX = e.clientX - rect.left;
+      if (clickX < rect.width / 2) {
+        updatePage(currentPage - 1);
+      } else {
+        updatePage(currentPage + 1);
+      }
+    });
+
+    chapterSelect.addEventListener('change', (e) => {
+      updatePage(parseInt(e.target.value, 10));
+    });
+
+    // Navigasi Keyboard (Panah Kiri / Kanan)
+    window.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowRight' || e.key === 'PageDown' || e.key === ' ') {
+        updatePage(currentPage + 1);
+      } else if (e.key === 'ArrowLeft' || e.key === 'PageUp') {
+        updatePage(currentPage - 1);
+      }
+    });
+
+    // Layar penuh
+    btnFullscreen.addEventListener('click', () => {
+      if (!document.fullscreenElement) {
+        document.documentElement.requestFullscreen().catch(err => alert(err.message));
+      } else {
+        document.exitFullscreen();
+      }
+    });
+
+    // Touch Swipe Support
+    let touchStartX = 0;
+    let touchEndX = 0;
+
+    document.getElementById('main-area').addEventListener('touchstart', (e) => {
+      touchStartX = e.changedTouches[0].screenX;
+    }, false);
+
+    document.getElementById('main-area').addEventListener('touchend', (e) => {
+      touchEndX = e.changedTouches[0].screenX;
+      if (touchEndX < touchStartX - 50) {
+        updatePage(currentPage + 1);
+      }
+      if (touchEndX > touchStartX + 50) {
+        updatePage(currentPage - 1);
+      }
+    }, false);
+
+    // Inisialisasi awal
+    updatePage(1);
+  </script>
+</body>
+</html>

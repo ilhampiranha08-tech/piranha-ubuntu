@@ -4,7 +4,7 @@
 ### *The Complete Saga — 10 Chapters 2026*
 
 **Komik Edukasi Petualangan Linux, Terminal & Filosofi Open Source**  
-*Karya Ilham Sugiri — Berbasis di Desa Panggungharjo, Bantul, D.I. Yogyakarta*
+*Karya Ilham Sugiri*
 
 ---
 
@@ -24,7 +24,7 @@
 
 ## 📖 Sinopsis Jilid 1
 
-Di Desa Panggungharjo, seorang anak berhoodie merah bernama **Riko** mengalami masalah saat laptopnya mati total dan menampilkan pesan *"No OS Found"*. Kemunculan **Tux si Pinguin** membimbing Riko mengenal dunia sistem operasi bebas Linux Ubuntu.
+Suatu hari, seorang anak berhoodie merah bernama **Riko** mengalami masalah saat laptopnya mati total dan menampilkan pesan *"No OS Found"*. Kemunculan **Tux si Pinguin** membimbing Riko mengenal dunia sistem operasi bebas Linux Ubuntu.
 
 Petualangan membawa mereka menghadapi monster bug di terminal, menerobos proteksi izin folder `/root` menggunakan kekuatan sakti `sudo`, terbang ke stasiun antariksa, mendirikan **Lab Komunitas Ubuntu** di desa, hingga akhirnya menemukan *Jantung Repositori Open Source* di gua tersembunyi dan membebaskan kode sumber untuk seluruh dunia.
 

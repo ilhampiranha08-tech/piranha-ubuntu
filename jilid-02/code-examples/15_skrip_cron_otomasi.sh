@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 # ==============================================================================
-# BAB 15: SIHIR SKRIP OTOMASI — JADWAL CRON PANGGUNGHARJO
+# BAB 15: SIHIR SKRIP OTOMASI — JADWAL CRON OTOMASI
 # Serial Komik Edukasi Piranha Ubuntu (Jilid 2)
-# Karya: Ilham Sugiri — Panggungharjo, Bantul
+# Karya: Ilham Sugiri
 # ==============================================================================
 
 echo "⏰ [Bab 15] Otomasi Penjadwalan Tugas (Cron & Backup Otomatis)"

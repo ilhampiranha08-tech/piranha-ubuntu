@@ -2,7 +2,7 @@
 # ==============================================================================
 # BAB 14: ARMADA PAUS BIRU — MENJALANKAN KONTAINER DOCKER
 # Serial Komik Edukasi Piranha Ubuntu (Jilid 2)
-# Karya: Ilham Sugiri — Panggungharjo, Bantul
+# Karya: Ilham Sugiri
 # ==============================================================================
 
 echo "🐳 [Bab 14] Simulasi Menjalankan Kontainer Paus Biru (Docker)"
@@ -17,4 +17,4 @@ if ! command -v docker &> /dev/null; then
 fi
 
 echo "[*] Menjalankan kontainer tes ringan Ubuntu di dalam sandbox isolasi:"
-docker run --rm alpine echo "Halo dari dalam kontainer isolasi Lab Panggungharjo!"
+docker run --rm alpine echo "Halo dari dalam kontainer isolasi Lab Piranha!"

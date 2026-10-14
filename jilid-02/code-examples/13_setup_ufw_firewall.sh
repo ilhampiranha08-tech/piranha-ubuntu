@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 # ==============================================================================
-# BAB 13: TEMBOK API PANGGUNGHARJO — KONFIGURASI FIREWALL UFW
+# BAB 13: TEMBOK API PIRANHA — KONFIGURASI FIREWALL UFW
 # Serial Komik Edukasi Piranha Ubuntu (Jilid 2)
-# Karya: Ilham Sugiri — Panggungharjo, Bantul
+# Karya: Ilham Sugiri
 # ==============================================================================
 
 echo "🛡️  [Bab 13] Mempersiapkan Dinding Api Pertahanan (UFW)"

@@ -44,5 +44,5 @@ Dengan mengirimkan kontribusi ke repositori ini:
 * Kontribusi teks/visual/komik akan otomatis dilisensikan di bawah **Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)**.
 * Kontribusi kode/skrip program akan otomatis dilisensikan di bawah **GNU General Public License v3.0 (GPL-3.0)**.
 
-Salam hangat dari Panggungharjo,  
+Salam hangat,  
 **Ilham Sugiri & Tim Piranha Ubuntu** ✨

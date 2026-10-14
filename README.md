@@ -3,7 +3,7 @@
 # 🐟 PIRANHA UBUNTU 🐧
 ### *Serial Komik Edukasi Linux, Terminal & Filosofi Open Source*
 
-**Karya Ilham Sugiri — Desa Panggungharjo, Bantul, D.I. Yogyakarta**
+**Karya Ilham Sugiri**
 
 ---
 
@@ -16,7 +16,7 @@
 
 <br/>
 
-> *"Petualangan Riko si bocah berhoodie merah dan Tux si Pinguin di Desa Panggungharjo dalam menjelajahi misteri sistem operasi Ubuntu, membasmi bug, merawat ekosistem alam dengan teknologi surya, dan membebaskan kode sumber untuk dunia!"*
+> *"Petualangan Riko si bocah berhoodie merah dan Tux si Pinguin dalam menjelajahi misteri sistem operasi Ubuntu, membasmi bug, merawat ekosistem alam dengan teknologi surya, dan membebaskan kode sumber untuk dunia!"*
 
 </div>
 
@@ -93,7 +93,6 @@ Semua skrip dan simulasi yang dijalankan di komik dapat langsung dicoba dan diek
 * **Pengalaman:** 15+ Tahun Pengguna & Penggiat Linux Ubuntu
 * **Karya:** Pembuat aplikasi *Vortex File Manager & Cloud Productivity & Creative Suite*
 * **Spesialisasi:** Android Native, System Security, File Management Tools
-* **Domisili:** Desa Panggungharjo, Kec. Sewon, Kab. Bantul, D.I. Yogyakarta, Indonesia
 * **Kontak Email:** [ilham.piranha08@gmail.com](mailto:ilham.piranha08@gmail.com)
 
 ---
@@ -106,6 +105,6 @@ Semua skrip dan simulasi yang dijalankan di komik dapat langsung dicoba dan diek
 ---
 
 <div align="center">
-  <sub>Dibuat dengan dedikasi dan semangat Open Source dari Desa Panggungharjo untuk Dunia.</sub><br/>
+  <sub>Dibuat dengan dedikasi dan semangat Open Source untuk Dunia.</sub><br/>
   <b>Hidup Ubuntu! Hidup Komunitas! 🐧✨</b>
 </div>

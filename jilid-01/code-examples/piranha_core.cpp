@@ -2,7 +2,6 @@
  * PIRANHA UBUNTU — piranha_core.cpp (Bab 10: Final Repository Tersembunyi)
  * 
  * Copyright (C) 2026 Ilham Sugiri <ilham.piranha08@gmail.com>
- * Desa Panggungharjo, Bantul, D.I. Yogyakarta
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -68,7 +67,7 @@ public:
 };
 
 int main() {
-    PiranhaCore core("Stasiun Sungai Panggungharjo - Gua Repositori");
+    PiranhaCore core("Stasiun Sungai Piranha - Gua Repositori");
     core.initialize();
     core.reportStatus();
     return 0;

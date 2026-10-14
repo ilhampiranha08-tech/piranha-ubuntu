@@ -2,10 +2,10 @@
 # ==============================================================================
 # BAB 11: MENGHUBUNGKAN DUNIA — DIAGNOSTIK JARINGAN UBUNTU
 # Serial Komik Edukasi Piranha Ubuntu (Jilid 2)
-# Karya: Ilham Sugiri — Panggungharjo, Bantul
+# Karya: Ilham Sugiri
 # ==============================================================================
 
-echo "🌐 [Bab 11] Memulai Diagnostik Jaringan Lab Panggungharjo..."
+echo "🌐 [Bab 11] Memulai Diagnostik Jaringan Lab Piranha..."
 echo "--------------------------------------------------------"
 
 # 1. Menampilkan Interface dan Alamat IP

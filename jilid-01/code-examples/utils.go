@@ -2,7 +2,6 @@
  * PIRANHA UBUNTU — utils.go (Bab 10: Final Repository Tersembunyi)
  *
  * Copyright (C) 2026 Ilham Sugiri <ilham.piranha08@gmail.com>
- * Desa Panggungharjo, Bantul, D.I. Yogyakarta
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by

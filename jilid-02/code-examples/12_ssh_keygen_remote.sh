@@ -2,7 +2,7 @@
 # ==============================================================================
 # BAB 12: PINTU RAHASIA SSH — GENERATOR KUNCI KRIPTOGRAFI
 # Serial Komik Edukasi Piranha Ubuntu (Jilid 2)
-# Karya: Ilham Sugiri — Panggungharjo, Bantul
+# Karya: Ilham Sugiri
 # ==============================================================================
 
 KEY_PATH="$HOME/.ssh/id_piranha_ed25519"
@@ -15,7 +15,7 @@ if [ -f "$KEY_PATH" ]; then
 else
     echo "[*] Membuat pasangan kunci SSH modern Ed25519..."
     mkdir -p "$HOME/.ssh" && chmod 700 "$HOME/.ssh"
-    ssh-keygen -t ed25519 -C "iko@lab-panggungharjo.local" -f "$KEY_PATH" -N ""
+    ssh-keygen -t ed25519 -C "iko@lab-piranha.local" -f "$KEY_PATH" -N ""
     echo "[✅] Kunci SSH berhasil dibuat:"
     echo "     - Kunci Rahasia: $KEY_PATH (Jangan disebar!)"
     echo "     - Kunci Publik : $KEY_PATH.pub (Dipasang di server tujuan)"

@@ -4,7 +4,7 @@
 ### *Petualangan Jaringan, Container & Keamanan Siber*
 
 **Serial Lanjutan Komik Edukasi Ubuntu Linux**  
-*Karya Ilham Sugiri — Desa Panggungharjo, Bantul, D.I. Yogyakarta*
+*Karya Ilham Sugiri*
 
 ---
 
@@ -13,7 +13,7 @@
 
 <br/>
 
-> *"Setelah kode berhasil dibebaskan di Jilid 1, ancaman baru muncul dari jaringan global. Riko, Tux, dan kawan-kawan di Lab Panggungharjo bersiap menjelajahi dunia networking, containerization, dan keamanan siber!"*
+> *"Setelah kode berhasil dibebaskan di Jilid 1, ancaman baru muncul dari jaringan global. Riko, Tux, dan kawan-kawan di Lab Piranha bersiap menjelajahi dunia networking, containerization, dan keamanan siber!"*
 
 </div>
 
@@ -25,7 +25,7 @@ Petualangan di Jilid 2 direncanakan akan mengangkat topik-topik Linux tingkat me
 
 1. **Bab 11 — Menghubungkan Dunia:** Pengenalan Jaringan Linux, IP Address, `ping`, `traceroute`, dan DNS.
 2. **Bab 12 — Pintu Rahasia SSH:** Mengendalikan server jarak jauh secara aman menggunakan SSH & kunci kriptografi (*Public/Private Keys*).
-3. **Bab 13 — Tembok Api Panggungharjo:** Membangun pertahanan server dengan Firewall UFW (*Uncomplicated Firewall*).
+3. **Bab 13 — Tembok Api Piranha:** Membangun pertahanan server dengan Firewall UFW (*Uncomplicated Firewall*).
 4. **Bab 14 — Armada Paus Biru:** Mengenal teknologi kontainer isolasi menggunakan **Docker** di Ubuntu.
 5. **Bab 15 — Sihir Skrip Otomasi:** Membuat skrip Bash otomatis dan penjadwalan berkala menggunakan `cron`.
 6. **Bab 16 — Benteng Keamanan Server:** Manajemen izin file tingkat lanjut (`chmod`, `chown`, `chgrp`) dan analisis log keamanan sistem.
